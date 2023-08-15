@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تغيير كلمات المرور </title>
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+ 
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Password Generator</title>
+    <script>
+    
+    function generatePassword() {
+            var length = document.getElementById("password-length").value;
+            var charset = "-@#%*+!?";
+            var numberChars = "0123456789";
+            var upperChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            var lowerChars = "abcdefghijklmnopqrstuvwxyz";
+            var allChars = numberChars + upperChars + lowerChars + charset;
+
+            var password = "";
+            var usedChars = ""; // متغير يتتبع الرموز المستخدمة
+
+
+            for (var i = 0; i < length; i++) {
+                 var randomIndex = Math.floor(Math.random() * allChars.length);
+                 var randomChar = allChars.charAt(randomIndex);
+
+                if (!usedChars.includes(randomChar)) { // التحقق من عدم تكرار الحرف
+                password += randomChar;
+                usedChars += randomChar; // إضافة الحرف إلى مجموعة الرموز المستخدمة
+              } else {
+                i--; // إعادة توليد حرف جديد لتجنب التكرار
+    }
+            }
+
+            document.getElementById("generated-password").value = password;
+        }
+
+    </script>
+</head>
+<body>
+    
+<!-- header section starts  -->
+
+<header class="header">
+
+    <a href="#" class="logo">  مساعد تغيير كلمة المرور </a>
+
+    <nav class="navbar">
+        <a href="#home">الرئيسية</a>
+        <a href="#services">تغيير كلمة المرور</a>
+        <a href="#dotdo">دليل المستخدم</a>
+        <a href="#about">من نحن؟</a>
+        
+    
+    </nav>
+
+    <div id="menu-btn" class="fas fa-bars"></div>
+
+</header>
+
+<!-- header section ends -->
+
+
+
+
+<!-- Modal Trigger -->
+<div class="overlay" id="welcomeModal">
+    <div class="modal">
+        <h2>أهلا بك في الموقع المساعد لتغيير كلمة المرور</h2>
+        <br>
+        
+        <button id="closeModal">إغلاق</button>
+    </div>
+</div>
+
+<!-- JavaScript to control modal -->
+<script>
+    const modal = document.getElementById('welcomeModal');
+    const closeModalButton = document.getElementById('closeModal');
+
+    // Display the modal
+    modal.style.display = 'flex';
+
+    // Close the modal when the button is clicked
+    closeModalButton.addEventListener('click', () => {
+        modal.style.display = 'none';
+    });
+</script>
+
+
+
+
+<!-- home section starts  -->
+
+<section class="home" id="home">
+
+    <div class="image">
+        <img src="img/img1.png" alt="">
+    </div>
+
+    <div class="content">
+        <h3> مساعد تغيير كلمة المرور لإختيار أسرع</h3>
+     
+    </div>
+
+</section>
+
+
+<!-- home section ends -->
+
+
+
+
+<!-- services section starts  -->
+
+<section class="services" id="services">
+
+    <h1 class="heading"> <span> كلمة المرور عشوائية</span> </h1>
+
+    <div class="box-container">
+
+        <div class="box">
+            <h3 >طول كلمة المرور</h3>
+            <input type="number" id="password-length" min="1" max="50" value="8">
+            <br><br>
+            <button class="btn" onclick="generatePassword()">انشاء كلمة المرور</button>
+            <br><br>
+            <h3 for="generated-password" >كلمة المرور</h3>
+            <input id="generated-password" readonly>
+        
+        </div>
+</div>
+</section>
+
+<!-- services section ends -->
+
+<!-- dotdo section starts  -->
+
+<section class="dotdo" id="dotdo">
+
+    <h1 class="heading"> دليل المستخدم  </h1>
+
+    <div class="box-container">
+
+        <div class="box">
+             
+            <h3>خطوات تفعيل  & تحديث البريد الوزاري</h3>
+        
+            <div class="share">
+                <a href="https://www.moe.gov.sa/ar/Documents/Support/VerificationGuide.pdf"  > دليل المستخدم </a>
+ 
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- dotdo section ends -->
+
+
+
+<!-- about section starts  -->
+
+<section class="about" id="about">
+
+    <h1 class="heading"> <span>  من </span> نحن؟ </h1>
+
+    <div class="row">
+
+        <div class="image">
+            <img src="img/img3.svg" alt="">
+        </div>
+
+        <div class="content">
+            <h3>ننشئ كلمات المرور بشكل أسرع</h3>
+            <p>متدربات كلية هندسة وعلوم الحاسب نعمل على جعل إختيار كلمات المرور </p>
+            <p>وتغييرها أسرع و أسهل</p>
+
+           <!-- <a href="#" class="btn"> read more<span class="fas fa-chevron-right"></span> </a> -->
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- about section ends -->
+
+<!-- footer section starts  -->
+
+<section class="footer">
+
+    <div class="box-container">
+
+        <div class="box">
+            <h3> فوزية الرويبعة</h3>
+            <a href="#"> <i class="fas fa-chevron-right"></i> مشرفة الدعم الفني تقنية المعلومات</a>
+            <a href="#"> <i class="fas fa-phone"></i> +966-500-0000 </a>
+            <a href="#"> <i class="fas fa-envelope"></i> myname@gmail.com </a>
+            <a href="#"> <i class="fas fa-map-marker-alt"></i> إدارة التعليم , الخرج </a>
+        
+        </div>
+
+        
+
+        <div class="box">
+            <h3>أثير الحلافي</h3>
+            <a href="#"> <i class="fas fa-chevron-right"></i> متدربة - بكالوريوس علوم حاسب</a>
+            <a href="#"> <i class="fas fa-phone"></i> +966-500-0000 </a>
+            <a href="#"> <i class="fas fa-envelope"></i> myname@gmail.com </a>
+            <a href="#"> <i class="fas fa-map-marker-alt"></i> كلية الهندسة وعلوم الحاسب , الخرج </a>
+    
+        </div>
+
+        <div class="box">
+            <h3>أشواق العتيبي</h3>
+            <a href="#"> <i class="fas fa-chevron-right"></i> متدربة - بكالوريوس هندسة برمجيات</a>
+            <a href="#"> <i class="fas fa-phone"></i> +966-500-0000 </a>
+            <a href="#"> <i class="fas fa-envelope"></i> myname@gmail.com </a>
+            <a href="#"> <i class="fas fa-map-marker-alt"></i> كلية الهندسة وعلوم الحاسب , الخرج </a>
+    
+            
+        </div>
+
+    </div>
+
+</section>
+
+<!-- footer section ends -->
+
+<!-- custom js file link  -->
+<script src="js/script.js"></script>
+
+</body>
+</html>
